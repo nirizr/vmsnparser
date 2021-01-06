@@ -68,7 +68,8 @@ class Tag():
         if size == -1:
             size = self.data_size - offset
         #print("base addr: {0:X}, paddr: {1:X}, size: {2:X}".format(self.data_offset, self.data_offset + offset, size))
-        return self.parser.read(self.data_offset + offset, size)
+        self.parser.seek(self.data_offset + offset)
+        return self.parser.read(size)
  
     def read_offset(self):
         if self.data_size < self.parser._offset_size:
